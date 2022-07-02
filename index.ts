@@ -1,13 +1,8 @@
 import 'module-alias/register';
 import { app } from 'config/app';
-import { connect } from 'mongoose';
 import { routes } from './config/routes';
 
-const port = 3000;
-
-connect(
-  'mongodb+srv://admin:18061806@gallery-cluster.9pixq.mongodb.net/?retryWrites=true&w=majority'
-).then(() => console.log('connected'));
+const port = process.env.PORT;
 
 app.use(routes.gallery, (req, res) => res.sendStatus(500));
 
