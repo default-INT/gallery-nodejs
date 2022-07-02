@@ -9,7 +9,8 @@
     "strict": true,
     "baseUrl": ".",
     "paths": {
-      "config": ["config/*"]
+      "config": ["config/*"],
+      "shared": ["shared/*"],
     }
   }
 }
