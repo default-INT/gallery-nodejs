@@ -1,5 +1,6 @@
 import { model, Schema, Types } from 'mongoose';
 import { requiredType } from 'shared/utils/requiredType';
+import { ModelNames } from '../types';
 
 const User = {
   id: Types.ObjectId,
@@ -15,4 +16,4 @@ const User = {
 };
 
 export const UserSchema = new Schema(User);
-export const UserModel = model('User', UserSchema);
+export const UserModel = model(ModelNames.User, UserSchema);

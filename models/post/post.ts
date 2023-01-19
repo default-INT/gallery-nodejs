@@ -1,5 +1,6 @@
 import { model, Schema, Types } from 'mongoose';
 import { requiredType } from 'shared/utils/requiredType';
+import { ModelNames } from '../types';
 
 const Post = {
   id: Types.ObjectId,
@@ -13,4 +14,4 @@ const Post = {
 };
 
 export const PostSchema = new Schema(Post);
-export const PostModel = model('Post', PostSchema);
+export const PostModel = model(ModelNames.Post, PostSchema);
