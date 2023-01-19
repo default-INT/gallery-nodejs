@@ -2,7 +2,7 @@ import 'module-alias/register';
 import { app } from 'config/app';
 import { routes } from './config/routes';
 
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 
 app.use(routes.gallery, (req, res) => res.sendStatus(500));
 

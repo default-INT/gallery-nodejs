@@ -10,7 +10,9 @@
     "baseUrl": ".",
     "paths": {
       "config": ["config/*"],
-      "shared": ["shared/*"],
+      "models": ["models/*"],
+      "services": ["services/*"],
+      "shared": ["shared/*"]
     }
   }
 }
