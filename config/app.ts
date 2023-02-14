@@ -1,9 +1,13 @@
 import { corsOptions } from 'config/corsOptions';
 import express from 'express';
-import { connect } from 'mongoose';
+import { connect, set as mongooseSet } from 'mongoose';
 
 export const app = express();
 
-connect(process.env.DB_CONNECTION ?? '').then(() => console.log('connected'));
+mongooseSet('strictQuery', false);
+
+connect(process.env.DB_CONNECTION ?? '')
+  .then(() => console.log('Connected to MongoDB'))
+  .catch((e) => console.error(e));
 
 app.use(corsOptions);

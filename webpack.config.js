@@ -1,9 +1,10 @@
 /* eslint-disable */
 const path = require('path');
-const { NODE_ENV = 'production' } = process.env;
 const nodeExternals = require('webpack-node-externals');
+const WebpackShellPluginNext = require('webpack-shell-plugin-next');
+require('dotenv').config({ path: path.resolve(__dirname, `.env`) });
 
-require('dotenv').config();
+const { NODE_ENV = 'production' } = process.env;
 
 const isEnvDevelopment = ['development', 'development-feature'].includes(process.env.NODE_ENV)
 
@@ -27,6 +28,20 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+    new WebpackShellPluginNext({
+      onBuildStart: {
+        scripts: ["npm run clean:dev && npm run clean:prod"],
+        blocking: true,
+        parallel: false,
+      },
+      onBuildEnd: {
+        scripts: ["npm run dev"],
+        blocking: false,
+        parallel: true,
+      },
+    }),
+  ],
   resolve: {
     modules: ['node_modules'],
     extensions: ['.ts', '.js'],
